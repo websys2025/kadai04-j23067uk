@@ -22,13 +22,13 @@
 
             // 商品用のクラス定義
             class Item {
-                static number = 1;
+                static number = 0;
                 constructor(name, price, stock) {
+                    Item.number++;
                     this.id = Item.number;
                     this.name = name;
                     this.price = price;
                     this.stock = stock;
-                    Item.number++;
                 }
 
                 // 商品一覧の表示関数
@@ -36,7 +36,9 @@
                     console.log("商品は以下の" + Item.number + "種類です。");
 
                     // 配列の内容を項目毎に出力
-                    // 課題4-1. ここにコードを書く
+                    for(let i=0;i<Item.number;i++){
+                        console.log(name[i]+"金額:"+price[i]+"在庫数:"+stock[i]);
+                    }// 課題4-1. ここにコードを書く
                     console.log(""); // 空行の出力
                 }
                 
