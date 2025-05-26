@@ -37,7 +37,7 @@
 
                     // 配列の内容を項目毎に出力
                     for(let i=0;i<Item.number;i++){
-                        console.log("商品番号:"+Item.number[i]+", 商品名:"+name[i]+", 金額:"+price[i]+", 在庫数:"+stock[i]);
+                        console.log("商品番号:"+this.id+", 商品名:"+this.name+", 金額:"+this.price+", 在庫数:"+this.stock);
                     }// 課題4-1. ここにコードを書く
                     console.log(""); // 空行の出力
                 }
@@ -46,7 +46,7 @@
                 buyItem() {          
                     if (this.stock >= 1) { 
                         console.log("商品番号: "+this.id+", 商品名: "+this.name+"を購入します。");
-                        // 課題4-2. ここにコードを書く
+                        this.stock=-1;// 課題4-2. ここにコードを書く
                         // 購入による商品の在庫削減処理
                         
                         // 課題4-3. ここにコードを書く
@@ -66,6 +66,19 @@
             // 課題4-1. ここにコード書く
             // 商品オブジェクトの生成
 
+            for (let i = 0; i < items.length; i++) {
+                item_list[i] = new Item(items[i].name, items[i].price, items[i].stock);
+                btn[i] = document.createElement("button");
+                btn[i].id = "button" + item_list[i].id;
+                btn[i].innerText = "購入";
+                itemArea.innerHTML += `<tr>
+                    <td>${item_list[i].name}</td>
+                    <td>${item_list[i].price}</td>
+                    <td id="stock${item_list[i].id}">${item_list[i].stock}</td>
+                    <td></td>
+                </tr>`;
+                itemArea.rows[i + 1].cells[3].appendChild(btn[i]);
+            }
             // 課題4-2. ここにコードを書く
             // 商品表の作成
 
